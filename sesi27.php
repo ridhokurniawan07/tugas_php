@@ -50,7 +50,11 @@ for ($i = 1; $i <= 9; $i++) {
         for ($i = 1; $i <= 10; $i++) {
             $nama = "Nama ke $i";
             $kelas = "Kelas " . (11 - $i);
-            $baris = ($i % 2 == 0) ? 'genap' : 'ganjil';
+            if ($i % 2 == 0) {
+                $baris = 'genap';
+            } else {
+                $baris = 'ganjil';
+            }
         ?>
             <tr class="<?php echo $baris; ?>">
                 <td><?php echo $i; ?></td>
