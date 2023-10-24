@@ -10,9 +10,7 @@
         table {
             border-collapse: collapse;
             width: 80%;
-            /* Atur lebar tabel sesuai kebutuhan Anda */
             margin: 0 auto;
-            /* Ini akan memusatkan tabel */
         }
 
         td {
