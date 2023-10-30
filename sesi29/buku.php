@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-$query = mysqli_query($conn, "select * from anggota");
+$query = mysqli_query($conn, "select * from buku");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,22 +71,18 @@ $query = mysqli_query($conn, "select * from anggota");
         <a href="penerbit.php">Penerbit</a>
     </div>
     <div>
-        <h2>Tabel Daftar Anggota Perpustakaan</h2>
+        <h2>Tabel Daftar Buku</h2>
     </div>
 
     <div>
         <table>
             <tr>
                 <th>No</th>
-                <th>ID Anggota</th>
-                <th>Nama</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Jenis Kelamin</th>
-                <th>Telp</th>
-                <th>Alamat</th>
-                <th>Email</th>
-                <th>Role</th>
+                <th>ISBN</th>
+                <th>Judul</th>
+                <th>Tahun</th>
+                <th>Stok</th>
+                <th>Harga Pinjam</th>
             </tr>
             <?php
             $no = 1;
@@ -94,15 +90,11 @@ $query = mysqli_query($conn, "select * from anggota");
             ?>
                 <tr>
                     <td><?php echo $no; ?></td>
-                    <td><?php echo $data["id_anggota"]; ?></td>
-                    <td><?php echo $data["nama"]; ?></td>
-                    <td><?php echo $data["username"]; ?></td>
-                    <td><?php echo $data["password"]; ?></td>
-                    <td><?php echo $data["sex"]; ?></td>
-                    <td><?php echo $data["telp"]; ?></td>
-                    <td><?php echo $data["alamat"]; ?></td>
-                    <td><?php echo $data["email"]; ?></td>
-                    <td><?php echo $data["role"]; ?></td>
+                    <td><?php echo $data["isbn"]; ?></td>
+                    <td><?php echo $data["judul"]; ?></td>
+                    <td><?php echo $data["tahun"]; ?></td>
+                    <td><?php echo $data["qty_stok"]; ?></td>
+                    <td><?php echo $data["harga_pinjam"]; ?></td>
                 </tr>
                 <?php $no++; ?>
             <?php  } ?>
