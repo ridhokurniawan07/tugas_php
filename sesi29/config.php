@@ -1,7 +1,7 @@
-<?php 
+<?php
 $host = "localhost";
-$username = "root";
-$password = "";
+$user = "root";
+$pass = "";
 $db = "perpus";
 
-$conn = new mysqli($host,$username,$password,$db);
+$conn = new mysqli($host, $user, $pass, $db);
