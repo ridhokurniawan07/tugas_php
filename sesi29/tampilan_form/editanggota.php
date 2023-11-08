@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>Edit Anggota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -38,15 +39,15 @@ foreach ($anggota as $data_anggota) {
                     <table class="table">
                         <tr>
                             <td>Nama</td>
-                            <td><input type="text" name="nama" class="form-control" required="" value="<?php echo $nama ?>"></td>
+                            <td><input type="text" name="nama" class="form-control" required="" value="<?php echo $nama ?>" id="name"></td>
                         </tr>
                         <tr>
                             <td>Username</td>
-                            <td><input type=" text" name="username" class="form-control" required="" value="<?php echo $username ?>"></td>
+                            <td><input type=" text" name="username" class="form-control" required="" value="<?php echo $username ?>" id="username"></td>
                         </tr>
                         <tr>
                             <td>Password</td>
-                            <td><input type="password" name="password" class="form-control" required="" value="<?php echo $password ?>"></td>
+                            <td><input type="password" name="password" class="form-control" required="" value="<?php echo $password ?>" id="password"></td>
                         </tr>
                         <tr>
                             <td>Jenis Kelamin</td>
@@ -54,7 +55,7 @@ foreach ($anggota as $data_anggota) {
                                 <div class="form-check">
                                     <?php
                                     if ($jenis_kelamin == 'P') {
-                                        echo '<input class="form-check-input" type="radio" name="sex" value="P" checked="">';
+                                        echo '<input class="form-check-input" type="radio" name="sex" value="P" checked="" id="jeniskelamin">';
                                     } else {
                                         echo '<input class="form-check-input" type="radio" name="sex" value="P">';
                                     }
@@ -64,7 +65,7 @@ foreach ($anggota as $data_anggota) {
                                 <div class="form-check">
                                     <?php
                                     if ($jenis_kelamin == 'L') {
-                                        echo '<input class="form-check-input" type="radio" name="sex" value="L" checked="">';
+                                        echo '<input class="form-check-input" type="radio" name="sex" value="L" checked="" id="jeniskelamin">';
                                     } else {
                                         echo '<input class="form-check-input" type="radio" name="sex" value="L">';
                                     }
@@ -75,15 +76,15 @@ foreach ($anggota as $data_anggota) {
                         </tr>
                         <tr>
                             <td>Telp</td>
-                            <td><input type="number" name="telp" class="form-control" required="" value="<?php echo $telp ?>"></td>
+                            <td><input type="number" name="telp" class="form-control" required="" value="<?php echo $telp ?>" id="telp"></td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
-                            <td><textarea class="form-control" name="alamat" required=""><?php echo $alamat ?></textarea></td>
+                            <td><textarea class="form-control" name="alamat" required="" id="alamat"><?php echo $alamat ?></textarea></td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td><input type="email" name="email" class="form-control" required="" value="<?php echo $email ?>"></td>
+                            <td><input type="email" name="email" class="form-control" required="" value="<?php echo $email ?>" id="email"></td>
                         </tr>
                         <tr>
                             <td>Role</td>
@@ -91,7 +92,7 @@ foreach ($anggota as $data_anggota) {
                                 <div class="form-check">
                                     <?php
                                     if ($role == 'ADMIN') {
-                                        echo ' <input class="form-check-input" type="radio" name="role" value="ADMIN" checked="">';
+                                        echo ' <input class="form-check-input" type="radio" name="role" value="ADMIN" checked="" id="role">';
                                     } else {
                                         echo '<input class="form-check-input" type="radio" name="role" value="ADMIN">';
                                     }
@@ -101,7 +102,7 @@ foreach ($anggota as $data_anggota) {
                                 <div class="form-check">
                                     <?php
                                     if ($role == 'USER') {
-                                        echo ' <input class="form-check-input" type="radio" name="role" value="USER" checked="">';
+                                        echo ' <input class="form-check-input" type="radio" name="role" value="USER" checked="" id="name"role>';
                                     } else {
                                         echo '<input class="form-check-input" type="radio" name="role" value="USER">';
                                     }
@@ -112,7 +113,7 @@ foreach ($anggota as $data_anggota) {
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" name="Submit" value="Submit" class="btn btn-primary"></td>
+                            <td><input type="submit" name="Submit" value="Submit" class="btn btn-primary" id="submit" disabled=""></td>
                         </tr>
                     </table>
                 </form>
@@ -122,3 +123,16 @@ foreach ($anggota as $data_anggota) {
 </body>
 
 </html>
+<script>
+$(document).ready(function () {
+    $("#name, #username, #password, #telp, #alamat, #email").on("keyup", function() {
+        $("#submit").prop('disabled', false);
+    });
+    $("#jeniskelamin").on("change", function() {
+        $("#submit").prop('disabled', false);
+    });
+    $("#role").on("change", function() {
+        $("#submit").prop('disabled', false);
+    });
+});
+</script>

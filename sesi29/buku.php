@@ -10,6 +10,9 @@ $query = mysqli_query($conn, "select * from buku");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>latihan</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body {
@@ -79,43 +82,50 @@ $query = mysqli_query($conn, "select * from buku");
         <a href="tampilan_form/tambahbuku.php" class="btn btn-primary">Tambah Data</a>
     </div>
     <div>
-        <table>
-            <tr>
-                <th>No</th>
-                <th>ISBN</th>
-                <th>Judul</th>
-                <th>Tahun</th>
-                <th>Id Penerbit</th>
-                <th>Id Pengarang</th>
-                <th>Id Katalog</th>
-                <th>Stok</th>
-                <th>Harga Pinjam</th>
-                <th>Aksi</th>
-            </tr>
-            <?php
-            $no = 1;
-            while ($data = mysqli_fetch_array($query)) {
-            ?>
+    <table id="myTable" class="display">
+            <thead>
                 <tr>
-                    <td><?php echo $no; ?></td>
-                    <td><?php echo $data["isbn"]; ?></td>
-                    <td><?php echo $data["judul"]; ?></td>
-                    <td><?php echo $data["tahun"]; ?></td>
-                    <td><?php echo $data["id_penerbit"]; ?></td>
-                    <td><?php echo $data["id_pengarang"]; ?></td>
-                    <td><?php echo $data["id_katalog"]; ?></td>
-                    <td><?php echo $data["qty_stok"]; ?></td>
-                    <td><?php echo $data["harga_pinjam"]; ?></td>
-                    <td>
-                        <a href="tampilan_form/editbuku.php?isbn=<?php echo $data['isbn']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="proses/proses_deletebuku.php?isbn=<?php echo $data['isbn']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('delete?');">Delete</a>
-                    </td>
+                    <th>No</th>
+                    <th>ISBN</th>
+                    <th>Judul</th>
+                    <th>Tahun</th>
+                    <th>Id Penerbit</th>
+                    <th>Id Pengarang</th>
+                    <th>Id Katalog</th>
+                    <th>Stok</th>
+                    <th>Harga Pinjam</th>
+                    <th>Aksi</th>
                 </tr>
-                <?php $no++; ?>
-            <?php  } ?>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                while ($data = mysqli_fetch_array($query)) {
+                ?>
+                    <tr>
+                        <td><?php echo $no; ?></td>
+                        <td><?php echo $data["isbn"]; ?></td>
+                        <td><?php echo $data["judul"]; ?></td>
+                        <td><?php echo $data["tahun"]; ?></td>
+                        <td><?php echo $data["id_penerbit"]; ?></td>
+                        <td><?php echo $data["id_pengarang"]; ?></td>
+                        <td><?php echo $data["id_katalog"]; ?></td>
+                        <td><?php echo $data["qty_stok"]; ?></td>
+                        <td><?php echo $data["harga_pinjam"]; ?></td>
+                        <td>
+                            <a href="tampilan_form/editbuku.php?isbn=<?php echo $data['isbn']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="proses/proses_deletebuku.php?isbn=<?php echo $data['isbn']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('delete?');">Delete</a>
+                        </td>
+                    </tr>
+                    <?php $no++; ?>
+                <?php  } ?>
+            </tbody>
         </table>
     </div>
 </body>
-
-
 </html>
+<script> 
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
